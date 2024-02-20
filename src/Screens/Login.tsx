@@ -1,35 +1,53 @@
-import React from 'react';
-import {View, Text, TextInput} from 'react-native';
-//import ButtonComponent from './src/component/Button';
+import React, {useState} from 'react';
+import {View, Text, TextInput, StyleSheet} from 'react-native';
+import ButtonComponent from '../component/Button';
 
 const Login = () => {
   return (
-    // <View
-    //   style={{
-    //     flexDirection: 'column',
-    //     height: 700,
-    //     padding: 20,
-    //   }}>
-    //   <Text>Login</Text>
+    <View style={styles.mainStyle}>
+      <Text style={styles.titleText}>Login</Text>
 
-    //   <View>
-    //     <TextInput placeholder="email" />
-    //     <TextInput placeholder="password" />
-    //   </View>
-    //   <Text>Forgot password</Text>
-    //   <ButtonComponent />
-    // </View>
-
-    <View
-      style={{
-        flexDirection: 'row',
-        height: 100,
-        padding: 20,
-      }}>
-
-<Text></Text>
+      <View style={styles.commonFeature}>
+        <TextInput style={[styles.formField]} placeholder="email" />
+        <TextInput style={[styles.formField, styles.marginTopp]} placeholder="password" />
       </View>
+
+      <Text style={[styles.commonFeature, styles.forgotPswd]}>Forgot password?</Text>
+      <ButtonComponent />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  mainStyle: {
+    justifyContent: 'center',
+    flexDirection: 'column',
+    height: 700,
+    padding: 20,
+    backgroundColor:'#696969'
+  },
+  commonFeature: {
+    padding: 20
+  },
+  marginTopp: {
+    marginTop: 20
+  },
+  titleText: {
+    fontSize: 30,
+    color: 'white',
+    justifyContent: 'center',
+    textAlign: 'center'
+  },
+  forgotPswd: {
+    textAlign: 'center',
+    color:'white'
+  },
+  formField: {
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor:'white'
+  },
+});
 
 export default Login;
