@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 40,
     color: 'black',
-    //fontWeight: 'bold',
+    fontWeight: 'bold',
   },
   tinyLogo: {
     width: 40,

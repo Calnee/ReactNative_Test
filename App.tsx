@@ -6,7 +6,7 @@ import Login from './src/Screens/Login';
 const App = () => {
   return (
     <>
-      <Login />
+      <InstaHomePage />
     </>
   );
  
