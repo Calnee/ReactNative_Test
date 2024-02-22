@@ -55,7 +55,7 @@ export function BottomTabNavigator() {
           headerShown: false,
           tabBarLabel: 'Search',
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="search1" color={color} size={size} />
+            <MaterialCommunityIcons name="animation" color={color} size={size} />
           ),
           tabBarActiveTintColor: 'red',
           tabBarInactiveTintColor: 'gray',
@@ -69,7 +69,7 @@ export function BottomTabNavigator() {
           headerShown: false,
           tabBarLabel: 'User',
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="user" color={color} size={size} />
+            <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
           tabBarActiveTintColor: 'red',
           tabBarInactiveTintColor: 'gray',
