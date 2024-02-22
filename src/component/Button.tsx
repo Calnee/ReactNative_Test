@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import {Text, View, TouchableOpacity, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const ButtonComponent = () => {
 
-  const [count, setCount] = useState<number>(0) ;
-
-  const onPress = ()=> {
-    setCount(prevCount => prevCount+1);
-    console.log('The result:',count);
-  }
+  const [count, setCount] = useState(0);
+  const navigation = useNavigation();
+ 
+  const onPress = () => {
+    setCount(prevCount => prevCount + 1);
+    console.log('we are here' + count);
+    navigation.navigate('InstaHome' as never);
+  };
   
   return (
     <View style={styles.button}>

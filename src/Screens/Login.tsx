@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   mainStyle: {
     justifyContent: 'center',
     flexDirection: 'column',
-    height: 700,
+    height: 830,
     padding: 20,
     backgroundColor:'#696969'
   },
