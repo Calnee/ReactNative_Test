@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, SectionList} from 'react-native';
 
 const feeds = [
   {
@@ -67,15 +67,23 @@ const feeds = [
   },
 ];
 
-type ItemProps = {title: string; feedImage: string; imageUrl: string; likeCount: string};
+type ItemProps = {
+  title: string;
+  feedImage: string;
+  imageUrl: string;
+  likeCount: string;
+};
 
-const Item = ({title, feedImage, imageUrl,likeCount}: ItemProps) => (
+const Item = ({title, feedImage, imageUrl, likeCount}: ItemProps) => (
   <View style={styles.storyContainer}>
     <View style={styles.firstRow}>
       <Image source={{uri: imageUrl}} style={styles.feedImage} />
       <Text style={styles.firstRowText}>{title}</Text>
     </View>
-    <Image source={{uri: feedImage}} style={[styles.storyImage, styles.secStyle]} />
+    <Image
+      source={{uri: feedImage}}
+      style={[styles.storyImage, styles.secStyle]}
+    />
 
     <View style={styles.secRow}>
       <Image style={styles.tinyLogo} source={require('../assets/heart.png')} />
@@ -90,24 +98,37 @@ const Item = ({title, feedImage, imageUrl,likeCount}: ItemProps) => (
 const FeedComponent = () => {
   return (
     <>
-     <View style={styles.mainStyle}>
-      {/* <Text>Stories</Text> */}
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        data={feeds}
-        renderItem={({ item }) => (
-          <Item
-            title={item.title}
-            feedImage={item.feedImage}
-            imageUrl={item.imageUrl}
-            likeCount={item.likeCount}
-          />
-        )}
-        keyExtractor={(item) => item.id}
-        horizontal={false}
-      />
-    </View>
-     </>
+      <View style={styles.mainStyle}>
+        {/* <Text>Stories</Text> */}
+        {/* <FlatList
+          showsVerticalScrollIndicator={false}
+          data={feeds}
+          renderItem={({item}) => (
+            <Item
+              title={item.title}
+              feedImage={item.feedImage}
+              imageUrl={item.imageUrl}
+              likeCount={item.likeCount}
+            />
+          )}
+          keyExtractor={item => item.id}
+          horizontal={false}
+        /> */}
+
+        <SectionList
+          sections={[{data: feeds}]}
+          keyExtractor={item => item.id}
+          renderItem={({item}) => (
+            <Item
+              title={item.title}
+              feedImage={item.feedImage}
+              imageUrl={item.imageUrl}
+              likeCount={item.likeCount}
+            />
+          )}
+        />
+      </View>
+    </>
   );
 };
 
@@ -119,7 +140,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   secStyle: {
-padding: 10
+    padding: 10,
   },
   firstRow: {
     flexDirection: 'row',
@@ -143,18 +164,18 @@ padding: 10
     marginTop: 20,
   },
   secRow: {
-    flexDirection:'row',
+    flexDirection: 'row',
     height: 60,
     padding: 20,
-    gap:10
+    gap: 10,
   },
   tinyLogo: {
-    height:25,
-    width:25
+    height: 25,
+    width: 25,
   },
-likeCount: {
-  marginLeft:20
-}
+  likeCount: {
+    marginLeft: 20,
+  },
 });
 
 export default FeedComponent;

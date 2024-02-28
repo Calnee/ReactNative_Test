@@ -6,6 +6,8 @@ import InstaHome from '../Screens/InstaHomePage';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Page2 from '../Screens/Page2';
 import Page1 from '../Screens/Page1';
+import Page3 from '../Screens/Page3';
+import Page4 from '../Screens/Page4';
 
 const StackNav = createNativeStackNavigator();
 export function HomeStackMavigation() {
@@ -55,7 +57,11 @@ export function BottomTabNavigator() {
           headerShown: false,
           tabBarLabel: 'Search',
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="animation" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="animation"
+              color={color}
+              size={size}
+            />
           ),
           tabBarActiveTintColor: 'red',
           tabBarInactiveTintColor: 'gray',
@@ -68,6 +74,34 @@ export function BottomTabNavigator() {
         options={{
           headerShown: false,
           tabBarLabel: 'User',
+          tabBarIcon: ({color, size}) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+          tabBarActiveTintColor: 'red',
+          tabBarInactiveTintColor: 'gray',
+        }}
+      />
+
+      <BottomNav.Screen
+        name="Page3"
+        component={Page3}
+        options={{
+          headerShown: false,
+          tabBarLabel: 'Page3',
+          tabBarIcon: ({color, size}) => (
+            <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+          tabBarActiveTintColor: 'red',
+          tabBarInactiveTintColor: 'gray',
+        }}
+      />
+
+      <BottomNav.Screen
+        name="Page4"
+        component={Page4}
+        options={{
+          headerShown: false,
+          tabBarLabel: 'page4',
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),

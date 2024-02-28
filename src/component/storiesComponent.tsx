@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, SectionList} from 'react-native';
 
 const stories = [
   {
@@ -46,11 +46,11 @@ const stories = [
   },
 ];
 
-type ItemProps = { title: string; imageUrl: string };
+type ItemProps = {title: string; imageUrl: string};
 
-const Item = ({ title, imageUrl }: ItemProps) => (
+const Item = ({title, imageUrl}: ItemProps) => (
   <View style={styles.storyContainer}>
-    <Image source={{ uri: imageUrl }} style={styles.storyImage} />
+    <Image source={{uri: imageUrl}} style={styles.storyImage} />
     <Text>{title}</Text>
   </View>
 );
@@ -59,11 +59,23 @@ const StoryComponent = () => {
   return (
     <View style={styles.mainStyle}>
       <Text>Stories</Text>
-      <FlatList
+      {/* <FlatList
         showsHorizontalScrollIndicator={false}
         data={stories}
-        renderItem={({ item }) => <Item title={item.title} imageUrl={item.imageUrl} />}
+        renderItem={({item}) => (
+          <Item title={item.title} imageUrl={item.imageUrl} />
+        )}
         keyExtractor={item => item.id}
+        horizontal={true}
+      /> */}
+
+      <SectionList
+        sections={[{data:stories}]}
+        keyExtractor={item => item.id}
+        renderItem={({item}) => (
+          <Item title={item.title} imageUrl={item.imageUrl} />
+        )}
+        showsHorizontalScrollIndicator={false}
         horizontal={true}
       />
     </View>
@@ -76,7 +88,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   mainStyle: {
-    padding:20,
+    padding: 20,
   },
   storyImage: {
     width: 75,
